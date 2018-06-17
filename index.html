@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-br">
+  <body>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>CA2D</title>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+      <a class="navbar-brand mx-auto" >CA2D</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+          <span class="navbar-toggler-icon"></span>
+      </button> 
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="translacao" onclick="alert('Translação!');">Translação</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="rotacao" onclick="alert('Rotacao!');">Rotação</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="escala" onclick="alert('Escala!');">M. Escala</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="extend" onclick="alert('Zoom!');">Zoom Extend</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="clear" onclick="clearCanvas(true);">Clear</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn btn-light" role="button" id="undo" onclick="desfazer();">Desfazer</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Desenhar
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" role="button" onclick="getObjeto(tipos.CIRCULO);" id="circulo">Circulo</a>
+            <a class="dropdown-item" role="button" onclick="getObjeto(tipos.RETA);" id="reta">Reta</a>
+            <a class="dropdown-item" role="button" onclick="getObjeto(tipos.TRIANGULO);" id="triangulo">Triângulo</a>
+            <a class="dropdown-item" role="button" onclick="getObjeto(tipos.QUADRILATERO);" id="quadrilatero">Quadrilatero</a>
+          </div>
+        </li>
+      </ul>
+      
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+          <ul class="navbar-nav ml-auto"> 
+            <li class="nav-item">
+              <a class="btn btn btn-light" id="sobre">Sobre</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Opções
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" role="button" onclick="alert('salvar!');">Salvar Objetos</a>
+                  <a class="dropdown-item" role="button" onclick="alert('load from!');">Carregar Objetos</a>
+                </div>
+              </li>
+            <li class="nav-item">
+              <a class="btn btn btn-light" role="button" onclick="alert('teste!');" id="ajuda">Ajuda</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <canvas id="myCanvas" style="position: absolute; right: 0.2%;"></canvas>
+    <script src="main.js "></script>
+
+    <!--button class="btn btn btn-primary" style="position: absolute; top: 10%; left: 1%;" id="translacao">Translação</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 10%; left: 9%;" id="rotacao">Rotação</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 20%; left: 1%;" id="mudanEscala">M. Escala</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 20%; left: 9%;" id="zoom">Zoom Extend</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 30%; left: 1%;" onclick="clearCanvas(true);" id="clear">Clear</button-->
+
+    <!--button class="btn btn btn-primary" style="position: absolute; top: 50%; left: 1%;" onclick="getObjeto(tipos.CIRCULO);" id="circulo">Circulo</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 50%; left: 9%;" onclick="getObjeto(tipos.RETA);" id="reta">Reta</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 60%; left: 1%;" onclick="getObjeto(tipos.TRIANGULO);" id="triangulo">Triângulo</button>
+    <button class="btn btn btn-primary" style="position: absolute; top: 60%; left: 9%;" onclick="getObjeto(tipos.QUADRILATERO);" id="quadrilatero">Quadrilatero</button-->
+
+    <a id="mouse" style="position: absolute; bottom: 1%; right: 1%;"></a>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
