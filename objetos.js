@@ -1,8 +1,51 @@
-var tipos = {
+const tipos = {
     CIRCULO : 1,
     RETA : 2,
     TRIANGULO : 3,
     QUADRILATERO: 4
 };
 
-export {tipos};
+class Ponto{
+    constructor(x, y){
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Objeto{
+    constructor(pontos, tipo){
+        this.tipo = tipo;
+        this.matriz = pontos;
+    }
+
+    draw(){
+        var i, j;
+
+        switch(this.tipo){
+            case tipos.CIRCULO:
+                context.beginPath();
+                //arc(x-centro, y-centro, raio, startAngle, endAngle)
+                context.arc(this.matriz[0].x, this.matriz[0].y, this.matriz[1], 0, 2 * Math.PI); 
+                context.stroke();
+                break;
+            
+            case tipos.RETA:
+                context.beginPath();
+                context.moveTo(this.matriz[0].x, this.matriz[0].y);
+                context.lineTo(this.matriz[1].x, this.matriz[1].y);
+                context.stroke();
+                break;
+
+            default:
+                for(i=0; i < this.tipo; i++){
+                    if (i==this.tipo-1){j = 0;} else {j = i+1;}
+
+                    context.beginPath();
+                    context.moveTo(this.matriz[i].x, this.matriz[i].y);
+                    context.lineTo(this.matriz[j].x, this.matriz[j].y);
+                    context.stroke();
+                }
+        }
+        
+    }
+}

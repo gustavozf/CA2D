@@ -1,3 +1,5 @@
+import * as A from './objetos.js';
+
 // ---------------------------------------------------------- Variaveis Globais
 // pegando o canvas
 var canvas = document.getElementById("myCanvas");
