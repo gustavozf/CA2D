@@ -35,13 +35,16 @@
           <li class="nav-item">
             <a class="btn btn btn-primary  text-white" id="sobre">Sobre</a>
           </li>
+          <li class="nav-item">
+              <a class="btn btn btn-primary  text-white" role="button" onclick="downloadObjectAsJson();">Salvar</a>
+            </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Opções
+                Carregar
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" role="button" onclick="alert('salvar!');">Salvar Objetos</a>
-                <a class="dropdown-item" role="button" onclick="alert('load from!');">Carregar Objetos</a>
+                  <input type="file" id="selectFiles" value="Import"/> 
+                  <a class="dropdown-item" id="sobre" onclick=" uploadJsonObject();">Importar</a>
               </div>
             </li>
           <li class="nav-item">
@@ -95,12 +98,15 @@
           <div class="card-footer">
               <div class="container">
                 <div class="row">
-                    <div class="col-auto">
-                        <input type="checkbox" id="automode"> Modo Automático 
-                    </div>
-                    <div class="col-auto">
+                    Modo Automático
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <input type="checkbox" id="automode"> 
+                          </div>
+                        </div>
                         <input type="text" id="autosize" value="200" placeholder="Tamanho">
-                    </div>
+                      </div>
                 </div>
               </div>
           </div>
@@ -110,7 +116,7 @@
       <div class="row">
         <div class="card text-center w-100">
           <div class="card-header">
-              Ações
+              Operações
             </div>
             <div class="card-body">
                 <div class="container">
@@ -172,8 +178,8 @@
 
     <script src="global.js " type="text/javascript"></script>
     <script src="objetos.js " type="text/javascript"></script>
-    <script src="canvas.js " type="text/javascript"></script>
     <script src="actions.js " type="text/javascript"></script>
+    <script src="canvas.js " type="text/javascript"></script>
     <script src="main.1.js " type="text/javascript"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

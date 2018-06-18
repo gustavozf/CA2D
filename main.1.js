@@ -1,3 +1,38 @@
+function uploadJsonObject(){
+    var files = document.getElementById('selectFiles').files;
+    var fr = new FileReader();
+    if (files.length == 1) {
+        fr.onload = function(e) { 
+            results = JSON.parse(e.target.result);
+            objetos = [];
+            index = 0;
+            results.forEach(element => {
+                addObj(new Objeto(element.matriz, element.tipo));
+            });
+            clearCanvas(false);
+            }
+          
+        fr.readAsText(files.item(0));
+    } else {
+        alert('Erro ao importar objetos!');
+    }
+}
+
+function downloadObjectAsJson(){
+    var date = new Date()
+    var exportName = prompt('Insira o nome do arquivo a ser salvo: ');
+
+    if (exportName != null){
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(objetos));
+        var downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href",     dataStr);
+        downloadAnchorNode.setAttribute("download", exportName + ".json");
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
+    }
+  }
+
 // ---------------------------------------------------------- Main
 function main(){
     console.log('Starting CA2D');
