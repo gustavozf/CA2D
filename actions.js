@@ -2,43 +2,81 @@ function getObjeto(tipo){
 
     var tam = mousePoints.length;
     var criado = false;
-    var aux;
+    var isAutomode = document.getElementById('automode').checked;
+    var aux, x, y;
+    var size = Number(document.getElementById('autosize').value);
 
     switch (tipo){
         case tipos.CIRCULO:
-            if(tam <2){
+            if(isAutomode){
+                if(tam <1){
+                    alert("Atenção: o modo automático exige pelo menos um ponto!");
+                }else {
+                    x = mousePoints[0].x;
+                    y = mousePoints[0].y;
+                    addObj(new Objeto([mousePoints[0], getRaio(mousePoints[0], new Ponto(x+size/2, y))], tipo));
+                    criado = true;
+                } 
+            }else if(tam <2){
                 alert("Atenção: são necessários pelo menos dois pontos!");
             } else {
-                criado = true;
                 addObj(new Objeto([mousePoints[0], getRaio(mousePoints[0], mousePoints[1])], tipo));
+                criado = true;
             }
             break;
         
         case tipos.RETA:
-            if(tam <2){
+            if(isAutomode){
+                if(tam <1){
+                    alert("Atenção: o modo automático exige pelo menos um ponto!");
+                }else {
+                    x = mousePoints[0].x;
+                    y = mousePoints[0].y;
+                    addObj(new Objeto([mousePoints[0], new Ponto(x+size, y)], tipo));
+                    criado = true;
+                }
+            }else if(tam <2){
                 alert("Atenção: são necessários pelo menos dois pontos!");
             } else {
-                criado = true;
                 addObj(new Objeto([mousePoints[0], mousePoints[1]], tipo));
+                criado = true;
             }
             break;
         
         case tipos.TRIANGULO:
-            if(tam <2){
+            if(isAutomode){
+                if(tam <1){
+                    alert("Atenção: o modo automático exige pelo menos um ponto!");
+                }else {
+                    x = mousePoints[0].x;
+                    y = mousePoints[0].y;
+                    addObj(new Objeto([mousePoints[0], new Ponto(x+size, y), new Ponto(x + size/2, y-size)], tipo));
+                    criado = true;
+                }
+            }else if(tam <2){
                 alert("Atenção: são necessários pelo menos três pontos!");
             } else {
-                criado = true;
                 addObj(new Objeto([mousePoints[0], mousePoints[1], mousePoints[2]], tipo));
+                criado = true;
             }
                 break;
         case tipos.QUADRILATERO:
-            if(tam == 2){
+            if(isAutomode){
+                if(tam <1){
+                    alert("Atenção: o modo automático exige pelo menos um ponto!");
+                }else {
+                    x = mousePoints[0].x;
+                    y = mousePoints[0].y;
+                    addObj(new Objeto([mousePoints[0], new Ponto(x, y+size), new Ponto(x+size, y+size), new Ponto(x+size, y)], tipo));
+                    criado = true;
+                }
+            }else if(tam == 2){
                 aux = getRectTwoPoints(mousePoints[0], mousePoints[1]);
-                criado = true;
                 addObj(new Objeto([mousePoints[0], aux[0], mousePoints[1], aux[1]], tipo));
-            } else if(tam == 4){
                 criado = true;
+            } else if(tam == 4){
                 addObj(new Objeto([mousePoints[0], mousePoints[1], mousePoints[2], mousePoints[3]], tipo));
+                criado = true;
             } else{
                 alert("Atenção: são necessários dois ou quatro pontos!");
             }
