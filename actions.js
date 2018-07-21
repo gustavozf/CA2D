@@ -4,7 +4,7 @@ function getObjeto(tipo){
     var criado = false;
     var isAutomode = document.getElementById('automode').checked;
     var aux, x, y;
-    var size = Number(document.getElementById('autosize').value);
+    var size = 200; //Number(document.getElementById('autosize').value);
 
     switch (tipo){
         case tipos.CIRCULO:
@@ -53,7 +53,7 @@ function getObjeto(tipo){
                     addObj(new Objeto([mousePoints[0], new Ponto(x+size, y), new Ponto(x + size/2, y-size)], tipo));
                     criado = true;
                 }
-            }else if(tam <2){
+            }else if(tam <=2){
                 alert("Atenção: são necessários pelo menos três pontos!");
             } else {
                 addObj(new Objeto([mousePoints[0], mousePoints[1], mousePoints[2]], tipo));
@@ -74,7 +74,7 @@ function getObjeto(tipo){
                 aux = getRectTwoPoints(mousePoints[0], mousePoints[1]);
                 addObj(new Objeto([mousePoints[0], aux[0], mousePoints[1], aux[1]], tipo));
                 criado = true;
-            } else if(tam == 4){
+            } else if(tam > 3){
                 addObj(new Objeto([mousePoints[0], mousePoints[1], mousePoints[2], mousePoints[3]], tipo));
                 criado = true;
             } else{

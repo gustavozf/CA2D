@@ -48,4 +48,29 @@ class Objeto{
         }
         
     }
+
+    toObjectMatrix(){
+        var i;
+        var coordenada;
+        var j = 0;
+        var matrix = [];
+
+        if(this.tipo != tipos.CIRCULO){
+            for (i = 0; index < this.matriz.length; i++) {
+                coordenada = [this.matriz[i].x, 
+                              this.matriz[i].y, 
+                              1];
+                matrix[j] = coordenada;
+                j++;
+            }
+        }
+
+        return matrix;
+    }
+
+    getTipo(){
+        return this.tipo;
+    }
+
+    
 }

@@ -56,7 +56,7 @@
     
     <canvas id="myCanvas" style="position: absolute; right: 0.2%;"></canvas>
 
-    <div class="container" style="width: 17%; position: absolute; top:8%; left: 2%;">
+    <div class="container" style="width: 16%; position: absolute; top:10%; left: 2%;">
       <div class="row">  
         <div class="card text-center w-100">
           <div class="card-header">
@@ -67,18 +67,17 @@
                   <div class="row">
                     <div class="col">
                       <button class="btn btn btn-outline-primary btn-block" 
-                              onclick="getObjeto(tipos.CIRCULO);" id="circulo"
-                              data-toggle="tooltip" data-placement="bottom" title="Escolha dois pontos e pressione este botão para criar um círculo!"
-                              >Círculo</button>
-                    </div>
-                    <div class="col">
-                      <button class="btn btn btn-outline-primary btn-block" 
                               onclick="getObjeto(tipos.RETA);" id="reta"
                               data-toggle="tooltip" data-placement="bottom" title="Escolha dois pontos e pressione este botão para criar uma reta!"
                               >Reta</button>
                     </div>
+                    <div class="col">
+                      <button class="btn btn btn-outline-primary btn-block" 
+                              onclick="getObjeto(tipos.CIRCULO);" id="circulo"
+                              data-toggle="tooltip" data-placement="bottom" title="Escolha dois pontos e pressione este botão para criar um círculo!"
+                              >Círculo</button>
+                    </div>
                   </div>
-                  <br>
                   <div class="row">
                     <div class="col">
                       <button class="btn btn btn-outline-primary btn-block" 
@@ -98,14 +97,14 @@
           <div class="card-footer">
               <div class="container">
                 <div class="row">
-                    Modo Automático
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <div class="input-group-text">
                               <input type="checkbox" id="automode"> 
                           </div>
                         </div>
-                        <input type="text" id="autosize" value="200" placeholder="Tamanho">
+                        <a> Automático </a>
+                        <!--input type="text" id="autosize" value="200" placeholder="Tamanho"-->
                       </div>
                 </div>
               </div>
@@ -113,7 +112,7 @@
         </div>
       </div>
       <br>
-      <div class="row">
+      <!--div class="row">
         <div class="card text-center w-100">
           <div class="card-header">
               Operações
@@ -132,7 +131,7 @@
             </div>
           </div>
       </div>
-      <br>
+      <br-->
       <div class="row">
         <div class="card text-center w-100">
           <div class="card-header">
@@ -156,7 +155,7 @@
       <div class="row">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary" onclick="alert(document.getElementById('prom').value);" type="button">></button>
+              <button class="btn btn-outline-secondary" onclick="alert(document.getElementById('prom').value);" type="button">>_</button>
             </div>
             <input type="text" class="form-control" id="prom" placeholder="" aria-label="" aria-describedby="basic-addon1">
           </div>
