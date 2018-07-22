@@ -42,7 +42,7 @@ function main(){
     // Mostra na tela a posicao do mouse
     canvas.addEventListener('mousemove', function(e) {
         var mouseP = getMousePos(canvas, e); /// provide this canvas and event
-        document.getElementById("mouse").innerHTML = "<" + Math.ceil(mouseP.x) + ", "+mouseP.y +">";
+        document.getElementById("mouse").innerHTML = "<" + Math.ceil(mouseP.x) + ", "+(canvas.height - mouseP.y) +">";
     
     }, false);
     // pega um click no canvas

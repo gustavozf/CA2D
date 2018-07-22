@@ -52,16 +52,13 @@ class Objeto{
     toObjectMatrix(){
         var i;
         var coordenada;
-        var j = 0;
-        var matrix = [];
+        var matrix = [[], [], []];
 
         if(this.tipo != tipos.CIRCULO){
             for (i = 0; index < this.matriz.length; i++) {
-                coordenada = [this.matriz[i].x, 
-                              this.matriz[i].y, 
-                              1];
-                matrix[j] = coordenada;
-                j++;
+                matrix[0][i] = this.matriz[i].x;
+                matrix[1][i] = this.matriz[i].y;
+                matrix[2][i] = 1;
             }
         }
 
@@ -72,5 +69,13 @@ class Objeto{
         return this.tipo;
     }
 
+    updateObj(newMat){
+        var i;
+    
+        for(i=0; i < this.getTipo(); i++){
+            this.matriz[i].x = newMat[0][i];
+            this.matriz[i].y = newMat[1][i];
+        }
+    }
     
 }

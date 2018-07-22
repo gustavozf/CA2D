@@ -24,6 +24,10 @@ function clearCanvas(clearObjs){
     if (clearObjs){
         removeAllObj();
     }
+
+    mousePoints = [];
+    selecao = [];
+    
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawCanvas();
 }

@@ -11,3 +11,5 @@ var index = 0;
 // posicao do mouse
 var mousePoints = [];
 var mouseIndex = 0;
+
+var selecao = [];
