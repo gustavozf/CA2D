@@ -49,3 +49,20 @@ function drawObjects(){
     });
 }
 
+function drawSelecao(selecao){
+    var i, j;
+
+    clearCanvas(false);
+
+    for(i=0; i < tipos.QUADRILATERO; i++){
+        if (i==tipos.QUADRILATERO-1){j = 0;} else {j = i+1;}
+    
+        context.beginPath();
+        context.moveTo(selecao[i].x, selecao[i].y);
+        context.lineTo(selecao[j].x, selecao[j].y);
+        
+        context.strokeStyle = '#00ffff';
+        context.stroke();
+    }
+
+}

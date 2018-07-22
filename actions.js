@@ -117,11 +117,56 @@ function getRectTwoPoints(P1, P2){
     }
 }
 
-function getListaObjetos(P1, P2){
-    var area = getRectTwoPoints(P1, P2);
+function getListaObjetos(){
+    if(mousePoints.length < 2){
+        alert('São necessários dois pontos para realizar a seleção!');
+    } else {
+        var area = getRectTwoPoints(mousePoints[0], mousePoints[1]);
+        var tam, cont;
+        var i, k, elemento;
+        selecao = [];
+  
+        for(k=0; k < objetos.length; k++) {
+            elemento = objetos[k];
+            tam = elemento.getTipo();
+            cont = 0;
 
+            if (tam != tipos.CIRCULO){
+                for(i=0; i<tam; i++){
+                    // conta a quantidade de pontos dentro da area
+                    if(inArea(area, elemento.matriz[i])){
+                        cont++;
+                    }
+                }
+                // se todos os pontos da forma estiverem na area
+                if (cont == tam){
+                    // adiciona na selecao
+                    alert('entrou!');
+                    selecao.push(Object.assign({}, elemento));
+                    alert(JSON.stringify(selecao));
+                }
+            } else {
+                var raio = elemento.matriz[1];
+                var x = elemento.matriz[0].x;
+                var y = elemento.matriz[0].y;
 
+                // se o circulo esta na area
+                if(
+                    (inArea(area, new Ponto(x + raio, y))) &&
+                    (inArea(area, new Ponto(x - raio, y))) &&
+                    (inArea(area, new Ponto(x, y + raio))) &&
+                    (inArea(area, new Ponto(x, y - raio)))
+                ){
+                    alert('entrou!');
+                    // adiciona na selecao
+                    selecao.push(Object.assign({}, elemento));
+                    alert(JSON.stringify(selecao));
+                }
+            }
+        }
 
+        drawSelecao(area);
+    }
 }
 
 // pega um ponto de um objeto
@@ -151,7 +196,7 @@ function getMaxAndMin(matrix){
 
     var i;
 
-    for(i=1; i <matrix.length; matrix++){
+    for(i=1; i < matrix.length; i++){
         // Pega o X max e min
         if(matrix[i].x > maxX){
             maxX = matrix[i].x;
@@ -177,6 +222,7 @@ function getMaxAndMin(matrix){
 
 function inArea(matrix, ponto){
     var ret = getMaxAndMin(matrix);
+    //alert(JSON.stringify(ret));
 
     return ((ponto.x <= ret.maxX) && (ponto.x >= ret.minX)) && ((ponto.y <= ret.maxY) && (ponto.y >= ret.minY));
 }

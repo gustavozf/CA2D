@@ -13,3 +13,4 @@ var mousePoints = [];
 var mouseIndex = 0;
 
 var selecao = [];
+var areaSelecao = [];
