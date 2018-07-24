@@ -51,11 +51,10 @@ class Objeto{
 
     toObjectMatrix(){
         var i;
-        var coordenada;
         var matrix = [[], [], []];
-
+        //alert("Entrou to objeto matrix!");
         if(this.tipo != tipos.CIRCULO){
-            for (i = 0; index < this.matriz.length; i++) {
+            for (i = 0; i < this.matriz.length; i++) {
                 matrix[0][i] = this.matriz[i].x;
                 matrix[1][i] = this.matriz[i].y;
                 matrix[2][i] = 1;

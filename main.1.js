@@ -9,7 +9,7 @@ function uploadJsonObject(){
             results.forEach(element => {
                 addObj(new Objeto(element.matriz, element.tipo));
             });
-            clearCanvas(false);
+            clearCanvas(false, true);
             }
           
         fr.readAsText(files.item(0));

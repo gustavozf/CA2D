@@ -18,15 +18,19 @@ function getMousePos(canvas, e) {
     return {x: e.clientX - rect.left, y: e.clientY - rect.top};
 }
 
-function clearCanvas(clearObjs){
+function clearCanvas(clearObjs, clearSelecao){
     console.log('> clear');
     
     if (clearObjs){
         removeAllObj();
     }
 
+    if (clearSelecao){
+        selecao = [];
+    }
+
     mousePoints = [];
-    selecao = [];
+    mouseIndex = 0;
     
     context.clearRect(0, 0, canvas.width, canvas.height);
     drawCanvas();
@@ -37,7 +41,7 @@ function desfazer(){
     if(objetos.length > 0){
         objetos.pop();
         index -= 1;
-        clearCanvas(false);
+        clearCanvas(false, true);
     } else {
         alert('Nenhum objeto existente!');
     }
@@ -52,7 +56,7 @@ function drawObjects(){
 function drawSelecao(selecao){
     var i, j;
 
-    clearCanvas(false);
+    clearCanvas(false, false);
 
     for(i=0; i < tipos.QUADRILATERO; i++){
         if (i==tipos.QUADRILATERO-1){j = 0;} else {j = i+1;}

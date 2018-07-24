@@ -117,14 +117,22 @@ function getRectTwoPoints(P1, P2){
     }
 }
 
+// selecao
 function getListaObjetos(){
+    if(selecao.length>0){
+        backup = mousePoints;
+        selecao = [];
+        clearCanvas(false, true);
+        mousePoints = backup;
+    }
+    
+
     if(mousePoints.length < 2){
         alert('São necessários dois pontos para realizar a seleção!');
     } else {
         var area = getRectTwoPoints(mousePoints[0], mousePoints[1]);
         var tam, cont;
         var i, k, elemento;
-        selecao = [];
   
         for(k=0; k < objetos.length; k++) {
             elemento = objetos[k];
@@ -141,9 +149,9 @@ function getListaObjetos(){
                 // se todos os pontos da forma estiverem na area
                 if (cont == tam){
                     // adiciona na selecao
-                    alert('entrou!');
-                    selecao.push(Object.assign({}, elemento));
-                    alert(JSON.stringify(selecao));
+                    //alert('entrou!');
+                    selecao.push(k);
+                    //alert(JSON.stringify(selecao));
                 }
             } else {
                 var raio = elemento.matriz[1];
@@ -159,8 +167,8 @@ function getListaObjetos(){
                 ){
                     alert('entrou!');
                     // adiciona na selecao
-                    selecao.push(Object.assign({}, elemento));
-                    alert(JSON.stringify(selecao));
+                    selecao.push(k);
+                    //alert(JSON.stringify(selecao)); 
                 }
             }
         }
@@ -172,14 +180,29 @@ function getListaObjetos(){
 // pega um ponto de um objeto
 function getObjectByPoint(ponto, lista){
     var i, j;
-    var objAtual;
+    var objAtual, tipo, area;
+    var x, y;
 
+    //alert("entrou get object by point!");
     for (i = 0; i < lista.length; i) {
-        objAtual = lista[i];
+        objAtual = objetos[lista[i]];
+        tipo = objAtual.getTipo();
 
-        if(objAtual.getTipo() != tipos.CIRCULO){
-            if(inArea(objAtual.matriz, ponto)){
-                return i;
+        if(tipo != tipos.CIRCULO){
+            for(j=0; j<tipo; j++){
+                x = objAtual.matriz[j].x;
+                y = objAtual.matriz[j].y;
+
+                area = [new Ponto(x - 15, y),
+                        new Ponto(x , y + 15),
+                        new Ponto(x + 15, y),
+                        new Ponto(x , y - 15)];
+
+
+                if(inArea(area, ponto)){
+                    //alert("Saiu getObj by point!");
+                    return lista[i];
+                }
             }
         }
         
@@ -227,3 +250,6 @@ function inArea(matrix, ponto){
     return ((ponto.x <= ret.maxX) && (ponto.x >= ret.minX)) && ((ponto.y <= ret.maxY) && (ponto.y >= ret.minY));
 }
 
+function getDeslocamento(P1, P2){
+    return {x: (P2.x - P1.x), y: (P2.y - P1.y)};
+}

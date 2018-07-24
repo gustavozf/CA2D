@@ -1,12 +1,12 @@
 function translacao(dx, dy, objId){
+    //alert("Entrou translacao!");
     var T = [
             [1, 0, dx],
             [0, 1, dy],
             [0, 0, 1]
     ];
     
-    var matrix = objetos[objId].toObjectMatrix();
-    return matrixMultiplication(T, matrix);
+    return matrixMultiplication(T, objetos[objId].toObjectMatrix());
 }
 
 function mudancaDeEscala(sx, sy, ponto, objId){
@@ -44,7 +44,7 @@ function matrixMultiplication(A, B){
     var C = []
 
     var i, j, k, sum;
-
+    //alert("Iniciou MM");
     for(i=0; i<n;i++){
         C[i] = [];
         for(j=0;j<p;j++){
@@ -56,6 +56,25 @@ function matrixMultiplication(A, B){
         }
     }
 
+    //alert("terminou MM");   
     //alert(C);
     return C;
+}
+
+function transladar(){
+    if (selecao.length == 0){
+        alert("Atenção! É necessário que pelo menos um objeto esteja selecionado!");
+    } else if(mousePoints.length < 2){
+        alert("Atenção! São necessários dois pontos para esta operação!\n"+
+              "O primeiro sendo um ponto do objeto e o segundo sendo o ponto onde o objeto será deslocado!");
+    } else {
+        id = getObjectByPoint(mousePoints[0], selecao);
+        if (id<0){
+            alert("Ponto selecionado não pertence ao objeto!")  ;
+        } else {
+            desloc = getDeslocamento(mousePoints[0], mousePoints[1]);
+            objetos[id].updateObj(translacao(desloc.x, desloc.y, id));
+            clearCanvas(false, true);   
+        }
+    }
 }
