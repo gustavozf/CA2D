@@ -165,7 +165,7 @@ function getListaObjetos(){
                     (inArea(area, new Ponto(x, y + raio))) &&
                     (inArea(area, new Ponto(x, y - raio)))
                 ){
-                    alert('entrou!');
+                    //alert('entrou!');
                     // adiciona na selecao
                     selecao.push(k);
                     //alert(JSON.stringify(selecao)); 
@@ -182,6 +182,7 @@ function getObjectByPoint(ponto, lista){
     var i, j;
     var objAtual, tipo, area;
     var x, y;
+    var centro, raio, pontos;
 
     //alert("entrou get object by point!");
     for (i = 0; i < lista.length; i) {
@@ -198,6 +199,29 @@ function getObjectByPoint(ponto, lista){
                         new Ponto(x + 15, y),
                         new Ponto(x , y - 15)];
 
+
+                if(inArea(area, ponto)){
+                    //alert("Saiu getObj by point!");
+                    return lista[i];
+                }
+            }
+        } else {
+            raio = objAtual.matriz[1];
+            x = objAtual.matriz[0].x;
+            y = objAtual.matriz[0].y;
+
+            pontos = [new Ponto(x + raio, y),
+                      new Ponto(x , y - raio),
+                      new Ponto(x - raio, y),
+                      new Ponto(x , y + raio)];
+
+            for(j=0; j<4; j++){
+                x = pontos[j].x;
+                y = pontos[j].y;
+                area = [new Ponto(x - 15, y),
+                        new Ponto(x , y + 15),
+                        new Ponto(x + 15, y),
+                        new Ponto(x , y - 15)];
 
                 if(inArea(area, ponto)){
                     //alert("Saiu getObj by point!");

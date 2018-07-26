@@ -20,21 +20,17 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="btn btn btn-primary  text-white" role="button" id="translacao" onclick="transladar();">Translação</a>
+            <a class="btn btn btn-primary  text-white" role="button" id="translacao" onclick="transladar();">Transladar</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn btn-primary  text-white" role="button" id="rotacao" onclick="alert('Rotacao!');">Rotação</a>
+            <a class="btn btn btn-primary  text-white" role="button" id="rotacao" onclick="rotacionar();">Rotacionar</a>
           </li>
           <li class="nav-item">
-            <a class="btn btn btn-primary  text-white" role="button" id="escala" onclick="alert('Escala!');">M. Escala</a>
+            <a class="btn btn btn-primary  text-white" role="button" id="escala" onclick="mudarEscala();">Mudar Escala</a>
           </li>
-          <li class="nav-item">
-            <a class="btn btn btn-primary  text-white" role="button" id="extend" onclick="alert('Zoom!');">Zoom Extend</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="btn btn btn-primary  text-white" id="sobre">Sobre</a>
-          </li>
+          <!--li class="nav-item">
+            <a class="btn btn btn-primary  text-white" role="button" id="extend" onclick="zoomExtend();">Zoom Extend</a>
+          </li-->
           <li class="nav-item">
               <a class="btn btn btn-primary  text-white" role="button" onclick="downloadObjectAsJson();">Salvar</a>
             </li>
@@ -48,7 +44,7 @@
               </div>
             </li>
           <li class="nav-item">
-            <a class="btn btn btn-primary text-white" role="button" onclick="alert('teste!');" id="ajuda">Ajuda</a>
+            <a class="btn btn btn-primary text-white" role="button" onclick="window.open('UserGuide/CA2D.pdf');" id="ajuda">Ajuda</a>
           </li>
         </ul>
       </div>
@@ -112,26 +108,6 @@
         </div>
       </div>
       <br>
-      <!--div class="row">
-        <div class="card text-center w-100">
-          <div class="card-header">
-              Operações
-            </div>
-            <div class="card-body">
-                <div class="container">
-                    <div class="row">
-                      <div class="col">
-                        
-                      </div>
-                      <div class="col">
-                        
-                      </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-      </div>
-      <br-->
       <div class="row">
         <div class="card text-center w-100">
           <div class="card-header">
@@ -144,7 +120,7 @@
                           <button class="btn btn btn-outline-info btn-block" role="button" id="select" onclick="getListaObjetos();">Selecionar</button> 
                       </div>
                       <div class="col">
-                        <button class="btn btn btn-outline-warning btn-block" role="button" id="undo" onclick="desfazer();">Desfazer</button> 
+                        <button class="btn btn btn-outline-warning btn-block" role="button" id="undo" onclick="desfazer();">Undraw</button> 
                       </div>
                       <div class="col">
                         <button class="btn btn btn-outline-danger btn-block" role="button" id="clear" onclick="clearCanvas(true, true);">Clear</button>
@@ -155,27 +131,8 @@
           </div>
       </div>
       <br>
-      <div class="row">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary" onclick="alert(JSON.stringify(selecao));" type="button">>_</button>
-            </div>
-            <input type="text" class="form-control" id="prom" placeholder="" aria-label="" aria-describedby="basic-addon1">
-          </div>
-      </div>
     </div>
-    <!--button class="btn btn btn-primary" style="position: absolute; top: 20%; left: 9%;" id="zoom">Zoom Extend</button>
-    <button class="btn btn btn-primary" id="mudanEscala">M. Escala</button>
-    <button class="btn btn btn-primary" id="rotacao">Rotação</button>
-    <button class="btn btn btn-primary" id="translacao">Translação</button>
-    <button class="btn btn btn-primary" style="position: absolute; top: 30%; left: 1%;" onclick="clearCanvas(true);" id="clear">Clear</button-->
-
-
     
-    
-    
-    
-
     <a id="mouse" style="position: absolute; bottom: 1%; right: 1%;"></a>
 
     <script src="global.js " type="text/javascript"></script>

@@ -59,6 +59,10 @@ class Objeto{
                 matrix[1][i] = this.matriz[i].y;
                 matrix[2][i] = 1;
             }
+        } else {
+            matrix[0][0] = this.matriz[0].x;
+            matrix[1][0] = this.matriz[0].y;
+            matrix[2][0] = 1;
         }
 
         return matrix;
@@ -74,6 +78,10 @@ class Objeto{
         for(i=0; i < this.getTipo(); i++){
             this.matriz[i].x = newMat[0][i];
             this.matriz[i].y = newMat[1][i];
+        }
+
+        if(this.getTipo() == tipos.CIRCULO){
+            this.matriz[1] = getRaio(this.matriz[0], new Ponto(newMat[0][1], newMat[1][1]));
         }
     }
     

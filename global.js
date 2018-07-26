@@ -2,6 +2,7 @@
 // pegando o canvas
 var canvas = document.getElementById("myCanvas");
 var context = canvas.getContext("2d");
+
 // declarando a lista de objetos
 var objetos = [];
 var index = 0;

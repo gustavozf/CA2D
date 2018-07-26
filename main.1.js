@@ -39,6 +39,7 @@ function main(){
 
     // Se a janela muda o tamanho, o canvas muda tbm
     window.addEventListener('resize', drawCanvas, false);
+    
     // Mostra na tela a posicao do mouse
     canvas.addEventListener('mousemove', function(e) {
         var mouseP = getMousePos(canvas, e); /// provide this canvas and event
