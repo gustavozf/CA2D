@@ -72,7 +72,7 @@ class Objeto{
         return this.tipo;
     }
 
-    updateObj(newMat){
+    updateObj(newMat, isScale){
         var i;
     
         for(i=0; i < this.getTipo(); i++){
@@ -80,7 +80,7 @@ class Objeto{
             this.matriz[i].y = newMat[1][i];
         }
 
-        if(this.getTipo() == tipos.CIRCULO){
+        if(this.getTipo() == tipos.CIRCULO && isScale){
             this.matriz[1] = getRaio(this.matriz[0], new Ponto(newMat[0][1], newMat[1][1]));
         }
     }

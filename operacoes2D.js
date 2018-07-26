@@ -5,7 +5,6 @@ function translacao(dx, dy, objId){
             [0, 1, dy],
             [0, 0, 1]
     ];
-    
     return matrixMultiplication(T, objetos[objId].toObjectMatrix());
 }
 
@@ -32,8 +31,8 @@ function mudancaDeEscala(sx, sy, ponto, objId){
 }
 
 function rotacao(angulo, ponto, objId){
-    var cos = Math.cos(angulo);
-    var sen = Math.sin(angulo);
+    var cos = Math.cos(-angulo);
+    var sen = Math.sin(-angulo);
     var x = ponto.x;
     var y = ponto.y;
 
@@ -99,7 +98,7 @@ function transladar(){
             alert("Ponto selecionado não pertence ao objeto!")  ;
         } else {
             desloc = getDeslocamento(mousePoints[0], mousePoints[1]);
-            objetos[id].updateObj(translacao(desloc.x, desloc.y, id));
+            objetos[id].updateObj(translacao(desloc.x, desloc.y, id), false);
             clearCanvas(false, true);   
         }
     }
@@ -119,7 +118,7 @@ function rotacionar(){
             alert("Ponto selecionado não pertence ao objeto!")  ;
         } else {
             angulo = prompt("Insira um ângulo a ser aplicada a rotação!");
-            objetos[id].updateObj(rotacao(angulo *Math.PI/180, mousePoints[0], id));
+            objetos[id].updateObj(rotacao(angulo *Math.PI/180, mousePoints[0], id), false);
             clearCanvas(false, true);   
         }
     }
@@ -141,7 +140,7 @@ function mudarEscala(){
         } else {
             s = prompt("Insira os valores de Sx e Sy separados por '/'").split('/');
 
-            objetos[id].updateObj(mudancaDeEscala(Number(s[0]), Number(s[1]), mousePoints[0], id));
+            objetos[id].updateObj(mudancaDeEscala(Number(s[0]), Number(s[1]), mousePoints[0], id), true);
             clearCanvas(false, true);   
         }
     }
